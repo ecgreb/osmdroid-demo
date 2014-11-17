@@ -6,21 +6,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.osmdroid.ResourceProxy;
+import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
+import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.util.ResourceProxyImpl;
 import org.osmdroid.views.MapView;
 
 
 public class OsmdroidActivity extends Activity {
 
+    public static final OnlineTileSourceBase STAMEN_WATERCOLOR = new XYTileSource(
+            "StamenWatercolor", ResourceProxy.string.unknown, 0, 17, 256, ".png",
+            new String[] { "http://a.tile.stamen.com/watercolor/",
+                    "http://b.tile.stamen.com/watercolor/",
+                    "http://c.tile.stamen.com/watercolor/",
+                    "http://d.tile.stamen.com/watercolor/"});
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_osmdroid);
 
-        ResourceProxy resourceProxy = new ResourceProxyImpl(getApplicationContext());
-        MapView mapView = new MapView(this, 256, resourceProxy);
+//        final MapView mapView = (MapView) findViewById(R.id.mapview);
+//        mapView.setTileSource(STAMEN_WATERCOLOR);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
